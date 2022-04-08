@@ -1,0 +1,31 @@
+<div class="mb-3 col-md-4">
+  <label>Server Name</label>
+
+
+  <input
+    type="text"
+    class="form-control mb-3 col-4-md"
+    [(ngModel)]="serverName">
+
+
+  <button
+    type="button"
+    class="btn btn-primary"
+    [disabled]="!allowNewServer"
+    (click)="onCreateServer()">Add Server</button>
+</div>
+
+<!-- <p [class]="statusClass">{{ serverCreationStatus }}</p> -->
+<!-- Directive ngIf with an Else Condition -->
+<p
+  [class]="statusClass"
+  *ngIf="serverCreated; else noServer">
+    Server {{ serverName }} created
+</p>
+
+<ng-template #noServer>
+  <p class="text-warning">No server was created</p>
+</ng-template>
+<!-- ngFor Directive -->
+<app-server *ngFor="let server of servers"></app-server>
+
